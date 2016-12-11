@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Resistance Deluxe</title>
+        <meta charset="utf-8">
+        <link href="styles.css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Orbitron:700' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <div id="wrapper">
+            <h1 id="header">Resistence</h1>
+
+            <!-- Step 1 -->
+            <div id="game-form-step-1">
+                <form>
+                    <h2>Username</h2>
+                    <input type="text" id="username" placeholder="Username"><br>
+                    <h2>Game name</h2>
+                    <input type="text" id="game-name" placeholder="Game"><br>
+                    <button type="button" id="create-game">Create new game</button>
+                    <button type="button" id="join-game">Join a game</button>
+                </form>
+            </div>
+
+            <!-- Step 2: player list (lobby) -->
+            <div id="lobby">
+                <h1 id="gameNameDisplay"> </h1>
+                <h2>Players</h2>
+                <ul id="lobby-players"></ul>
+                <button type="button" id="start-game">Start game</button>
+            </div>
+
+            <!-- Step : player list (lobby) -->
+            <div id="waitingForOrders">
+                <h1 id="gameNameDisplay"> </h1>
+                <h2>Waiting for orders</h2>
+            </div>
+
+            <!-- Step : player list (lobby) -->
+            <div id="dragAndDrop">
+                <h1 id="gameNameDisplay"> </h1>
+                <h2>Players</h2>
+                <ul class="lobby-players">
+                </ul>
+                <button type="button" id="orderDone">Done</button>
+            </div>
+
+            <!-- Step 3: before showing role -->
+            <div id="beforeShowingRole">
+                <h1 class="gameNameDisplay"> </h1>
+                <h2 class="userName"></h2>
+                <p>Everybody will now see their role.</p>
+                <p>Klick to see your role don't show the others</p>
+                <button type="button" id="showRole">show role</button>
+            </div>
+
+            <!-- Step 4: show role -->
+            <div id="ShowingRole">
+                <h1 class="gameNameDisplay"> </h1>
+                <h2 class="userName"></h2>
+                <h2 id="role"></h2>
+                <h2 id="otherPlayer"></h2>
+                <ul id="spyList"> </ul>
+                <p>Klick to hide your role </p>
+                <button type="button" id="hideRole">hide role</button>
+            </div>
+
+            <!-- Step 5: waiting for other players -->
+            <div id="waitingForPlayers">
+                <h1 class="gameNameDisplay"> </h1>
+                <h2 class="userName"></h2>
+                <h2>Waiting for other players</h2>
+            </div>
+
+            <!-- Step 6: nomination and main site -->
+            <div id="coreLoop">
+                <div id="voteTrack">
+                    <p id="vt">
+                        VT
+                    </p>
+                    <div id="dot1" class="dots">
+                    </div>
+                    <div id="dot2" class="dots">
+                    </div>
+                    <div id="dot3" class="dots">
+                    </div>
+                    <div id="dot4" class="dots">
+                    </div>
+                    <div id="dot5" class="dots">
+                    </div>
+                </div>
+                <div id="players">
+                    <ul id="playerList"> </ul>
+                </div>
+                <img id="menu" src="menu-icon-1.png">
+                <button class="button" id="nominate">Nominate</button>
+                <div class="empty">
+                </div>
+            </div>
+
+            <!-- Step 7: nomination vote -->
+            <div id="nominationVote">
+                <h1 class="gameNameDisplay"> </h1>
+                <!--add nominated plaeys here-->
+                <h2>nominated players</h2>
+                <button type="button" id="reject">reject</button>
+                <button type="button" id="approve">approve</button>
+            </div>
+
+            <div id="waitingForNominationVotes">
+                <h1 class="gameNameDisplay"> </h1>
+                <p>The other players are now voting </p>
+            </div>
+
+            <!-- Step : nomination vote result -->
+            <div id="voteResult">
+                <h1 class="gameNameDisplay"> </h1>
+                <h2 id="nominationVotes"> <h2>
+                <ul id="votesAndNames"> </ul>
+            </div>
+        </div>
+        <div class="empty">
+        </div>
+
+        <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.js"></script>
+        <script src="variables.js"></script>
+        <script src="events.js"></script>
+        <script src="getBoard.js"></script>
+        <script src="functions.js"></script>
+        <script src="listeners.js"></script>
+    </body>
+</html>

@@ -1,0 +1,182 @@
+body {
+    background-image: url(background.jpg);
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    margin: 0px;
+    color: #FFF;
+
+}
+#wrapper {
+    margin: 0px;
+    width: 97%;
+    padding: 5px;
+}
+
+#wrapper h1 {
+    text-align: center;
+}
+
+#game-form-step-1 {
+    text-align: center;
+    margin: 0 auto;
+}
+
+#game-form-step-1 h2 {
+    margin-bottom: 1px;
+}
+
+#game-form-step-1 input {
+    height: 40px;
+    width: 280px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: #000;
+}
+
+button {
+    height: 40px;
+    width: 140px;
+    color: #FFF;
+    background: linear-gradient(#6666FF, #0000CC);
+    border: 1px solid #000;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+#lobby {
+    display: none;
+    text-align: center;
+}
+#lobby h2 {
+    border-bottom: 1px solid #FFF;
+}
+
+#lobby-players {
+    text-align: center;
+    list-style-type: none;
+    padding: 0px;
+}
+
+#waitingForOrders {
+    display: none;
+}
+
+#dragAndDrop {
+    display: none;
+}
+
+#beforeShowingRole {
+    display: none;
+}
+
+#ShowingRole {
+    display: none;
+}
+
+#ready {
+    display: none;
+}
+
+#waitingForPlayers {
+	display: none;
+}
+
+#nominationVote{
+	display: none;
+}
+
+#waitingForNominationVotes {
+	display: none;
+}
+
+#voteResult{
+    display: none;
+}
+
+#coreLoop {
+    display: none;
+    width:100%;
+}
+
+#voteTrack {
+    width: 25px;
+    height: 110px;
+    float: left;
+    background-color: #000;
+    text-align: center;
+    border: 1px solid #000;
+    border-radius: 3px;
+    margin: 5px;
+    font-size: 12px;
+}
+#vt{
+    margin-top: 5px;
+    font-weight: bold;
+    color: #FFF;
+}
+.dots {
+    clear: both;
+    background-color: #FFF;
+    border: 1px solid #FFF;
+    border-radius: 10px;
+    width: 10px;
+    height: 10px;
+    margin: 3px auto;
+}
+#players {
+    position: absolute;
+    color: #FFF;
+    right: 0;
+    left: 0;
+    top: 0;
+    margin: auto;
+    margin-top: 50px;
+    font-size: 15px;
+    text-align: center;
+    width: 70%;
+}
+#playerList {
+    background-color: rgba(255, 255, 255, 0.1);
+    height: auto;
+    margin: auto;
+    padding: 5px;
+    list-style-type: none;
+}
+.player {
+    border: 1px solid #333;
+    border-radius: 5px;
+    width: 92%;
+    margin: 5px auto;
+    padding: 10px 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+#nominate {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(#6666FF, #0000CC);
+    border: 1px solid #6666FF;
+    border-radius: 10px;
+    width: 90%;
+    text-align: center;
+    margin: 10px auto;
+    font-size: 20px;
+    color: #FFF;
+}
+#menu{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 40px;
+    width: 12%;
+    max-width: 50px;
+    margin: 10px;
+}
+.empty {
+    clear: both;
+}
