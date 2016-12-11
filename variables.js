@@ -4,7 +4,7 @@ ALL Lobal variables!
 */
 
 //link to firebase
-var baseurl = "https://resistancehonken.firebaseio.com/";
+var baseurl = "https://asres.firebaseio.com/";
 
 //referense to the main  repository
 var resistenceRef = new Firebase(baseurl);
@@ -19,17 +19,27 @@ var createGame = $('#create-game'),
     nominate = $('#nominate'),
     reject = $('#reject'),
     approve = $('#approve'),
-    orderDone =$('#orderDone'),
-    player = $('.player');
+    orderDone = $('#orderDone'),
+    success = $('#success'),
+    fail = $('#fail'),
+    startMission = $('#startMission'),
+    player = $('.player'),
+    leftArrow = $('#arrowLeft'),
+    rightArrow = $('#arrowRight'),
+    nextMission = $('#nextMission'),
+    missionAgendaCards = $('#missionAgendaCards')
+    restartNomination = $('#restartNomination')
 
 //global varable with all the players in the lobby
 var lobbyPlayerList = $('#lobby-players');
 //global variable with all the players in the game. Will be shown in the core loop
 var playerList = $('#playerList');
+//list with all players and what they voted on the nominated team
+var votesAndNames = $('#votesAndNames');
 
 //global varables for the state of the game
 
-var user = { name: "", id: "", role: ""};
+var user = { name: "", id: "", role: "", missionleader: false};
 //game = undefined?
 var game;
 //gameID = Name of the game
@@ -41,4 +51,10 @@ var missionLeader;
 //One variabel to test the function getNextMissionLeader(gameName, missionleader).
 var i = 0;
 // Game board for game, a list with five objects (one/mission)
-var gameBoard = [];
+var gameBoard;
+// current mission
+var currentMission = 0;
+// vote Tracker
+var voteTracker = 0;
+
+var nominatedPlayers = [];

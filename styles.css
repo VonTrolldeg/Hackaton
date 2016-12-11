@@ -26,17 +26,18 @@ body {
 }
 
 #game-form-step-1 input {
-    height: 40px;
+    height: 50px;
     width: 280px;
     font-family: 'Orbitron', sans-serif;
     font-weight: 700;
     font-size: 12px;
     color: #000;
+    border-radius: 4px;
 }
 
 button {
-    height: 40px;
-    width: 140px;
+    height: 50px;
+    width: 145px;
     color: #FFF;
     background: linear-gradient(#6666FF, #0000CC);
     border: 1px solid #000;
@@ -46,7 +47,12 @@ button {
     font-weight: 700;
     font-size: 12px;
 }
-
+#buttons {
+    position: absolute;
+    bottom: 5px;
+    right: 0;
+    left: 0;
+}
 #lobby {
     display: none;
     text-align: center;
@@ -86,6 +92,7 @@ button {
 }
 
 #nominationVote{
+    text-align: center;
 	display: none;
 }
 
@@ -94,6 +101,49 @@ button {
 }
 
 #voteResult{
+    text-align: center;
+    display: none;
+}
+
+#whilePlayersOnMission{
+	display: none;
+}
+
+#startMission{
+	display: none;
+}
+
+#restartNomination{
+    display: none;
+}
+
+#votesAndNames{
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    height: auto;
+    margin: auto;
+    padding: 5px;
+    list-style-type: none;
+    border-radius: 10px;
+}
+
+#missionAgenda{
+    display: none;
+}
+.star {
+    position: absolute;
+    left: 5px;
+    top: 20%;
+    height: 20px;
+    width: 20px;
+
+}
+
+#displayMissionAgenda{
+    display: none;
+}
+
+#nextMission{
     display: none;
 }
 
@@ -106,7 +156,7 @@ button {
     width: 25px;
     height: 110px;
     float: left;
-    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.9);
     text-align: center;
     border: 1px solid #000;
     border-radius: 3px;
@@ -127,6 +177,48 @@ button {
     height: 10px;
     margin: 3px auto;
 }
+#missions {
+    display: none;
+    position: absolute;
+    z-index: 100;
+    left: 0px;
+    width: 65px;
+    height: 280px;
+    background-color: rgba(25, 25, 25, 0.9);
+    text-align: center;
+    border: 1px solid #000;
+    border-radius: 3px;
+    margin: 5px 5px 5px 0px;
+    font-size: 12px;
+}
+.missionSquare {
+    clear: both;
+    background-color: #444;
+    border: 1px solid #FFF;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    margin: 15px 5px 15px 5px;
+    padding: 3px;
+
+}
+#arrowRight {
+    position: absolute;
+    z-index: 200;
+    left: 0px;
+    top: 255px;
+    width: 20px;
+    height: 35px;
+}
+#arrowLeft {
+    display: none;
+    position: absolute;
+    z-index: 200;
+    left: 50px;
+    top: 255px;
+    width: 20px;
+    height: 35px;
+}
 #players {
     position: absolute;
     color: #FFF;
@@ -137,22 +229,24 @@ button {
     margin-top: 50px;
     font-size: 15px;
     text-align: center;
-    width: 70%;
+    width: 60%;
 }
 #playerList {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.2);
     height: auto;
     margin: auto;
     padding: 5px;
     list-style-type: none;
+    border-radius: 10px;
 }
 .player {
+    position: relative;
     border: 1px solid #333;
     border-radius: 5px;
     width: 92%;
     margin: 5px auto;
     padding: 10px 5px;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(230, 230, 230, 0.8);
 }
 #nominate {
     position: absolute;

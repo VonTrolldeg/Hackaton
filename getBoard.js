@@ -5,16 +5,17 @@ function getBoard(numberOfPlayers){
     Objects have five keys:
     playersRequired & failsRequired (integers)
     missionStatus (string)
-    participants (list of objects with players' data)
-    voteSum (integer) - is measured against failsrequired to see if mission succeeded or failed
+    agendas (integer) - iterated when player's have chosen agenda, measured against playersRequired
+        to see when mission is complete
+    failSum (integer) - is measured against failsrequired to see if mission succeeded or failed
 
     Board index by line:
-    20. fivePlayerBoard
-    58. sixPlayerBoard
-    96. sevenPlayerBoard
-    134. eightPlayerBoard
-    172. ninePlayerBoard
-    210. tenPlayerBoard
+    21. fivePlayerBoard
+    59. sixPlayerBoard
+    97. sevenPlayerBoard
+    135. eightPlayerBoard
+    173. ninePlayerBoard
+    211. tenPlayerBoard
     */
 
     var fivePlayerBoard = [
@@ -22,36 +23,36 @@ function getBoard(numberOfPlayers){
             playersRequired: 2,
             failsRequired: 1,
             missionStatus: "TBD", // alt. "Succeded" / "Failed"
-            participants: [], // same objects as in "players/gameName" in firebase
-            voteSum: 0 // Succeed mission = 0, fail mission = 1. If voteSum >= failsRequired -> mission fail
+            agendas: 0, // players choice of fail/success
+            failSum: 0 // Succeed mission = 0, fail mission = 1. If failSum >= failsRequired -> mission fail
         },
         {
             playersRequired : 3,
             failsRequired : 1,
             missionStatus: "TBD",
-            participants: [],
-            voteSum: 0
+            agendas: 0,
+            failSum: 0
         },
         {
             playersRequired : 2,
             failsRequired : 1,
             missionStatus: "TBD",
-            participants: [],
-            voteSum: 0
+            agendas: 0,
+            failSum: 0
         },
         {
             playersRequired : 3,
             failsRequired : 1,
             missionStatus: "TBD",
-            participants: [],
-            voteSum: 0
+            agendas: 0,
+            failSum: 0
         },
         {
             playersRequired : 3,
             failsRequired : 1,
             missionStatus: "TBD",
-            participants: [],
-            voteSum: 0
+            agendas: 0,
+            failSum: 0
         }
     ];
 
@@ -60,36 +61,36 @@ function getBoard(numberOfPlayers){
             playersRequired: 2,
             failsRequired: 1,
             missionStatus: "TBD",
-            participants: [],
-            voteSum: 0
+            agendas: 0,
+            failSum: 0
         },
         {
             playersRequired : 3,
             failsRequired : 1,
             missionStatus: "TBD",
-            participants: [],
-            voteSum: 0
+            agendas: 0,
+            failSum: 0
         },
         {
             playersRequired : 4,
             failsRequired : 1,
             missionStatus: "TBD",
-            participants: [],
-            voteSum: 0
+            agendas: 0,
+            failSum: 0
         },
         {
             playersRequired : 3,
             failsRequired : 1,
             missionStatus: "TBD",
-            participants: [],
-            voteSum: 0
+            agendas: 0,
+            failSum: 0
         },
         {
             playersRequired : 4,
             failsRequired : 1,
             missionStatus: "TBD",
-            participants: [],
-            voteSum: 0
+            agendas: 0,
+            failSum: 0
         }
     ];
 
@@ -98,36 +99,36 @@ function getBoard(numberOfPlayers){
             playersRequired: 2,
             failsRequired: 1,
             missionStatus: "TBD",
-            participants: [],
-            voteSum: 0
+            agendas: 0,
+            failSum: 0
         },
         {
             playersRequired : 3,
             failsRequired : 1,
             missionStatus: "TBD",
-            participants: [],
-            voteSum: 0
+            agendas: 0,
+            failSum: 0
         },
         {
             playersRequired : 3,
             failsRequired : 1,
             missionStatus: "TBD",
-            participants: [],
-            voteSum: 0
+            agendas: 0,
+            failSum: 0
         },
         {
             playersRequired : 4,
             failsRequired : 2,
             missionStatus: "TBD",
-            participants: [],
-            voteSum: 0
+            agendas: 0,
+            failSum: 0
         },
         {
             playersRequired : 4,
             failsRequired : 1,
             missionStatus: "TBD",
-            participants: [],
-            voteSum: 0
+            agendas: 0,
+            failSum: 0
         }
     ];
 
@@ -136,36 +137,36 @@ function getBoard(numberOfPlayers){
             playersRequired: 3,
             failsRequired: 1,
             missionStatus: "TBD",
-            participants: [],
-            voteSum: 0
+            agendas: 0,
+            failSum: 0
         },
         {
             playersRequired : 4,
             failsRequired : 1,
             missionStatus: "TBD",
-            participants: [],
-            voteSum: 0
+            agendas: 0,
+            failSum: 0
         },
         {
             playersRequired : 4,
             failsRequired : 1,
             missionStatus: "TBD",
-            participants: [],
-            voteSum: 0
+            agendas: 0,
+            failSum: 0
         },
         {
             playersRequired : 5,
             failsRequired : 2,
             missionStatus: "TBD",
-            participants: [],
-            voteSum: 0
+            agendas: 0,
+            failSum: 0
         },
         {
             playersRequired : 5,
             failsRequired : 1,
             missionStatus: "TBD",
-            participants: [],
-            voteSum: 0
+            agendas: 0,
+            failSum: 0
         }
     ];
 
@@ -174,36 +175,36 @@ function getBoard(numberOfPlayers){
             playersRequired: 3,
             failsRequired: 1,
             missionStatus: "TBD",
-            participants: [],
-            voteSum: 0
+            agendas: 0,
+            failSum: 0
         },
         {
             playersRequired : 4,
             failsRequired : 1,
             missionStatus: "TBD",
-            participants: [],
-            voteSum: 0
+            agendas: 0,
+            failSum: 0
         },
         {
             playersRequired : 4,
             failsRequired : 1,
             missionStatus: "TBD",
-            participants: [],
-            voteSum: 0
+            agendas: 0,
+            failSum: 0
         },
         {
             playersRequired : 5,
             failsRequired : 2,
             missionStatus: "TBD",
-            participants: [],
-            voteSum: 0
+            agendas: 0,
+            failSum: 0
         },
         {
             playersRequired : 5,
             failsRequired : 1,
             missionStatus: "TBD",
-            participants: [],
-            voteSum: 0
+            agendas: 0,
+            failSum: 0
         }
     ];
 
@@ -212,48 +213,48 @@ function getBoard(numberOfPlayers){
             playersRequired: 3,
             failsRequired: 1,
             missionStatus: "TBD",
-            participants: [],
-            voteSum: 0
+            agendas: 0,
+            failSum: 0
         },
         {
             playersRequired : 4,
             failsRequired : 1,
             missionStatus: "TBD",
-            participants: [],
-            voteSum: 0
+            agendas: 0,
+            failSum: 0
         },
         {
             playersRequired : 4,
             failsRequired : 1,
             missionStatus: "TBD",
-            participants: [],
-            voteSum: 0
+            agendas: 0,
+            failSum: 0
         },
         {
             playersRequired : 5,
             failsRequired : 2,
             missionStatus: "TBD",
-            participants: [],
-            voteSum: 0
+            agendas: 0,
+            failSum: 0
         },
         {
             playersRequired : 5,
             failsRequired : 1,
             missionStatus: "TBD",
-            participants: [],
-            voteSum: 0
+            agendas: 0,
+            failSum: 0
         }
     ];
 
     // Object handling all boards for easy return
 
     var boards = {
-        //testing
+        // Testing boards below
         "1" : fivePlayerBoard,
         "2" : fivePlayerBoard,
         "3" : fivePlayerBoard,
         "4" : fivePlayerBoard,
-        //testing
+        // Real boards below
         "5" : fivePlayerBoard,
         "6" : sixPlayerBoard,
         "7" : sevenPlayerBoard,

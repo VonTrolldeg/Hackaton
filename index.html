@@ -4,7 +4,7 @@
         <title>Resistance Deluxe</title>
         <meta charset="utf-8">
         <link href="styles.css" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <link href='https://fonts.googleapis.com/css?family=Orbitron:700' rel='stylesheet' type='text/css'>
     </head>
     <body>
@@ -34,15 +34,15 @@
             <!-- Step : player list (lobby) -->
             <div id="waitingForOrders">
                 <h1 id="gameNameDisplay"> </h1>
-                <h2>Waiting for orders</h2>
+                <h2>All players are now placed in order of seating </h2>
             </div>
 
             <!-- Step : player list (lobby) -->
             <div id="dragAndDrop">
-                <h1 id="gameNameDisplay"> </h1>
                 <h2>Players</h2>
-                <ul class="lobby-players">
-                </ul>
+                <p> drag and drop the players in order of seating </p>
+                <p> The first olayer will be assigned mission leader for the first round </p>
+                <ul class="lobby-players"></ul>
                 <button type="button" id="orderDone">Done</button>
             </div>
 
@@ -57,7 +57,6 @@
 
             <!-- Step 4: show role -->
             <div id="ShowingRole">
-                <h1 class="gameNameDisplay"> </h1>
                 <h2 class="userName"></h2>
                 <h2 id="role"></h2>
                 <h2 id="otherPlayer"></h2>
@@ -90,6 +89,26 @@
                     <div id="dot5" class="dots">
                     </div>
                 </div>
+                <div class="empty"> </div>
+                <div id="missions">
+                    <div id="mission1" class="missionSquare">
+                        <p>1</p>
+                    </div>
+                    <div id="mission2" class="missionSquare">
+                        <p>2</p>
+                    </div>
+                    <div id="mission3" class="missionSquare">
+                        <p>3</p>
+                    </div>
+                    <div id="mission4" class="missionSquare">
+                        <p>4</p>
+                    </div>
+                    <div id="mission5" class="missionSquare">
+                        <p>5</p>
+                    </div>
+                </div>
+                <img id="arrowLeft" src="arrowLeft.png">
+                <img id="arrowRight" src="arrowRight.png">
                 <div id="players">
                     <ul id="playerList"> </ul>
                 </div>
@@ -101,23 +120,52 @@
 
             <!-- Step 7: nomination vote -->
             <div id="nominationVote">
-                <h1 class="gameNameDisplay"> </h1>
                 <!--add nominated plaeys here-->
-                <h2>nominated players</h2>
-                <button type="button" id="reject">reject</button>
-                <button type="button" id="approve">approve</button>
+                <p>The nominated players are: </p>
+                <div id="nominatedPlayers">
+                </div>
+                <div id="buttons">
+                    <button type="button" id="reject">reject</button>
+                    <button type="button" id="approve">approve</button>
+                </div>
             </div>
 
             <div id="waitingForNominationVotes">
-                <h1 class="gameNameDisplay"> </h1>
                 <p>The other players are now voting </p>
             </div>
 
             <!-- Step : nomination vote result -->
             <div id="voteResult">
-                <h1 class="gameNameDisplay"> </h1>
-                <h2 id="nominationVotes"> <h2>
+                <h2 id="nominationVotes"> </h2>
                 <ul id="votesAndNames"> </ul>
+                <div id="buttons">
+                    <button type="button" id="startMission">Start mission</button>
+                    <button type="button" id="restartNomination">Nominate new players</button>
+                </div>
+            </div>
+
+            <!-- Step : agenda votes -->
+            <div id="missionAgenda">
+                <!--add nominated plaeys here-->
+                <h2>What is your mission agenda? </h2>
+                <button type="button" id="success">success</button>
+                <button type="button" id="fail">fail</button>
+            </div>
+
+            <!-- Step : agenda votes -->
+            <div id="whilePlayersOnMission">
+                <!--add nominated plaeys here-->
+                <p>The other players are now on mission</p>
+            </div>
+
+            <!-- Step : Display all players agenda from mission -->
+            <div id="displayMissionAgenda">
+                <!--add nominated plaeys here-->
+                <h2>Mission Result</h2>
+                <ul id="missionAgendaCards">
+
+                </ul>
+                <button type="button" id="nextMission">Next Mission</button>
             </div>
         </div>
         <div class="empty">

@@ -1,11 +1,10 @@
-
 /*
 ALL the events
 */
 createGame.on('click', function() {
     //when someone clicks create new game
     user.name = $('#username').val();
-    var gameName = $('#game-name').val();
+    var gameName = $('#game-name').val().toLowerCase();
 
     //checks if the game name already exists
     //checkExistingGames(gameName);
@@ -19,7 +18,7 @@ createGame.on('click', function() {
     listenToRemovedPlayerNames(gameName);
 
     // NOTE COMMENTING NEEDED
-    startGame(gameID);
+    lisetenTostartGame(gameID);
 
     //hides step 1 shows next step
     $('#game-form-step-1').hide();
@@ -30,7 +29,7 @@ createGame.on('click', function() {
 joinGame.on('click', function() {
     // when someone clicks join game set create game to false cus we're not creating a new game
     user.name = $('#username').val();
-    var gameName = $('#game-name').val();
+    var gameName = $('#game-name').val().toLowerCase();
 
     // NOTE: check if game exists
     // If the player are joining an existing game with that already has a name
@@ -40,7 +39,7 @@ joinGame.on('click', function() {
 
     listenToNewPlayerNames(gameName);
     listenToRemovedPlayerNames(gameName);
-    startGame(gameID);
+    lisetenTostartGame(gameID);
 
     //hides step 1 shows next step
     $('#game-form-step-1').hide();
@@ -52,6 +51,9 @@ joinGame.on('click', function() {
 startGame.on('click', function() {
     //runs the function that sets the values for firebase/games/hasstarted
     setupRoleList(gameID);
+    getMissionLeader(gameID, user.id);
+    getLocalGameBoard(gameID);
+    //listenToCoreLoopRestart(gameID);
     $('#lobby').hide();
 });
 
@@ -70,12 +72,20 @@ orderDone.on('click', function() {
 
 showRole.on('click', function(){
     //runs the functions that displays the players role
+    resistenceRef.child('games/' + gameID).once('value', function(gameSnapshot) {
+        var gameRef = gameSnapshot.val();
+        // change the value to 2
+        gameRef.hasStarted = 3;
+        resistenceRef.child("games/" + gameID).update(gameRef);
+    });
     getUserRole(gameID, user.id);
     $('#beforeShowingRole').hide();
     $('.userName').text(user.name);
     $('#role').text(user.role);
     $('#ShowingRole').show();
-    listenToReadyPlayers(gameID, user.id);
+    getMissionLeader(gameID, user.id);
+    showNominateButton();
+    listenToReadyPlayers(gameID);
 
 });
 
@@ -88,23 +98,14 @@ hideRole.on('click', function(){
     $('#waitingForPlayers').show();
     // var readyValue = true;
     setPlayerReadyValue(gameID, user.id, true);
-    DisplayForMissionLeader(gameID);
 });
-
-
-$(".player").on("click", function(){
-    //border på den som är nominerad
-    markNominatedPlayer(gameID)
-});
-
 
 nominate.on('click', function(){
     //hide step show step
     $('#nominate').hide();
-    // set the ready value to false
+    // set the ready value to false so we can set them true agian when they vote
+    setAllPlayerReadyValueFalse(gameID, false);
 
-    setAllPlayerReadyValueFalse(gameID, false)
-    $('#nominationVote').show();
 });
 
 approve.on('click', function(){
@@ -117,11 +118,11 @@ approve.on('click', function(){
     //save the vote for this player
     saveNomineeVote(gameID, user.id, "approve");
     //collect all votes and count them
-    collectVotes(gameID);
+    // collectVotes(gameID);
+    listenToReadyPlayersVoting(gameID);
 });
 
 reject.on('click', function(){
-    console.log("reject");
     //starts with updating players/userID/ready to false
     //hide step show step
     $('#nominationVote').hide();
@@ -130,5 +131,60 @@ reject.on('click', function(){
     setPlayerReadyValue(gameID, user.id, true);
     //save the vote for this player
     saveNomineeVote(gameID, user.id, "reject");
-    collectVotes(gameID);
+    //listenToNewMissionleader(gameID);
+    // collectVotes(gameID);
+    listenToReadyPlayersVoting(gameID);
+    listenToCoreLoopRestart(gameID)
+});
+
+// When player click to succeed mission
+success.on("click", function(){
+    // Add one to agenda on gameBoard.currentMission to signal that mission is completed for the player
+    agendaPlusOne(gameID, currentMission);
+    /*
+    //Change current mission +1 and
+    setMissionStatus(mission);
+    */
+    // NOTE HIDE SHIT AFTER
+    $('#missionAgenda').hide();
+    $('#whilePlayersOnMission').show();
+});
+
+// When player click to fail mission
+fail.on("click", function(){
+    // failSum + 1
+    failVote(gameID);
+    // Add one to agenda on gameBoard.currentMission to signal that mission is completed for the player
+    agendaPlusOne(gameID, currentMission);
+    // NOTE HIDE SHIT AFTER
+    $('#missionAgenda').hide();
+    $('#whilePlayersOnMission').show();
+});
+
+rightArrow.on("click", function(){
+    $('#missions').show();
+    leftArrow.show();
+    rightArrow.hide();
+});
+
+leftArrow.on("click", function(){
+    $('#missions').hide();
+    rightArrow.show();
+    leftArrow.hide();
+});
+
+nextMission.on("click", function(){
+    // -> set next mission leader
+    getNextMissionLeader(gameID);
+    // -> add one to currentMission
+    addToCurrentMission(gameID);
+    //NOTE function 470 ska det inte vara den globala current mission där?
+    // -> run coreLoop
+    $('#displayMissionAgenda').hide();
+    showNominateButton();
+    $('#playerList').show();
+    $('#coreLoop').show();
+    // -> set ready to false
+    setAllPlayerReadyValueFalse(gameID, false)
+    // -> reset all votes????
 });
