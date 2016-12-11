@@ -1,4 +1,4 @@
-// Gets up board based on number of players
+// Sets up board based on number of players
 function getBoard(numberOfPlayers){
     /* Boards are set up as lists with five objects, one for each mission.
 
@@ -20,8 +20,8 @@ function getBoard(numberOfPlayers){
 
     var fivePlayerBoard = [
         {
-            playersRequired: 2,
-            failsRequired: 1,
+            playersRequired: 2, // Players required for mission
+            failsRequired: 1, // Fails required to fail mission
             missionStatus: "TBD", // alt. "Succeded" / "Failed"
             agendas: 0, // players choice of fail/success
             failSum: 0 // Succeed mission = 0, fail mission = 1. If failSum >= failsRequired -> mission fail
