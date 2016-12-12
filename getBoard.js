@@ -262,7 +262,7 @@ function getBoard(numberOfPlayers){
         "9" : ninePlayerBoard,
         "10" : tenPlayerBoard
     };
-
+    
     return boards[numberOfPlayers];
 
 }
