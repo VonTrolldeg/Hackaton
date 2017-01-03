@@ -1,0 +1,8 @@
+0. Nästa steg är steg 4, alltså att visa roller när gameleader klickar på done... Detta måste skötas med en listener som lyssnar på om gamePhase uppdateras till 4. Frågan är om detta ska göras i listenToGameStart
+    eller om det ska skapas en ny listener och att listenToGameStart ska .offas?
+
+1. Varje ny runda m�ste det uppdateras en ny host. Nu g�rs det n�r man skapar en ny player men det borde g�ras n�gonstans d�r det g�r att g�ra varje runda
+
+2. g�r hela startsekvensen utan att b�rja spelet. Splet m�ste kunna k�ras om och om igen separat. Skriv det sen.
+
+3. ha en fil för alla funktioner som har med starten att göra och en med alla funktioner som ahr med själva spelet att göra

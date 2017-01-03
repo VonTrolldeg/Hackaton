@@ -2,7 +2,7 @@
    ***** EVENTS *****
 */
 
-/* 
+/*
     Events in step 1 - Create/Join game
 */
 
@@ -10,7 +10,7 @@
 $("#create-game").on("click", function(){
     var nameInput = $("#username").val();
     var gameInput = $("#game-name").val();
-    
+
     // Fetch input and test if undefined (or already in use)
     if (testNewGameInput(nameInput, gameInput)) {
         // If both fields are filled out -> create game
@@ -29,14 +29,14 @@ $("#create-game").on("click", function(){
         moveToStepTwo(gameInput);
         // Start listener to check if player starts game
         listenToGameStart(gameInput);
-    };  
+    };
 });
 
 // Event when clicking Join game
 $("#join-game").on("click", function(){
     var nameInput = $("#username").val();
     var gameInput = $("#game-name").val();
-    
+
     // Fetch input and test if undefined (or already in use <-- !Add later!)
     if (testJoinGameInput(nameInput, gameInput)) {
         // Add player to server and game, set host status as false
@@ -55,20 +55,24 @@ $("#join-game").on("click", function(){
     };
 });
 
-/* 
+/*
     Events in step 2 - Lobby
 */
 
 // Event when pressing start game in lobby
 $("#start-game").on("click", function(){
-    // Setup all player roles 
-    setupRoleList(globalGameName);
-
     // Hide lobby step
     $("#lobby").hide();
     // Start game session
     startGameSession(globalGameName);
-    // Show step 3 - Drag and Drop
-    dragAndDrop(globalGameName);
-    
+
+
+});
+
+/*
+    Events in step 3 - Drag and drop
+*/
+
+$("#orderDone").on("click", function () {
+
 });

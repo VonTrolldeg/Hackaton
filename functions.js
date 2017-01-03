@@ -1,13 +1,13 @@
-/* 
+/*
     ***** FUNCTIONS *****
 */
 
-/* 
+/*
     Functions for step 1 - create/join game
 */
 
 
-// Checks user input when creating game 
+// Checks user input when creating game
 function testNewGameInput(name, game) {
 
     // Check if not undefined (empty)
@@ -17,12 +17,12 @@ function testNewGameInput(name, game) {
     // If not empty - create game
     } else {
         // NOTE: Check if game name exists already here
-        
+
         return true;
     };
 };
 
-// Checks user input when joining game 
+// Checks user input when joining game
 function testJoinGameInput(name, game) {
 
     // Check if not undefined (empty)
@@ -42,8 +42,8 @@ function testJoinGameInput(name, game) {
 function createNewGame(game) {
     // Add game data to Firebase server
     var gameData = {
-        gamePhase : 2, // Control variable to see if game has started - bool
-        currentMission : 0, // Controls mission number - int 
+        gamePhase : 1, // Control variable to see if game has started - int
+        currentMission : 0, // Controls mission number - int
         restartCoreLoop : false //Controls if to restart core loop - bool
     };
 
@@ -52,13 +52,13 @@ function createNewGame(game) {
     firebaseRef.child("games/" + game).set(gameData);
 };
 
-// Add new player data to global object and firebase server 
+// Add new player data to global object and firebase server
 function addPlayerToServer(newUser, gameName, isHost) {
     // Create player on firebase server
     var firebaseUserInfo = firebaseRef.child("players/" + gameName).push();
     // Get firebase generated ID, clone to global var
     globalUserInfo.id = firebaseUserInfo.key();
-    // Update global userInfo var with name and hosting status 
+    // Update global userInfo var with name and hosting status
     globalUserInfo.name = newUser;
     globalUserInfo.hostStatus = isHost;
 
@@ -68,12 +68,12 @@ function addPlayerToServer(newUser, gameName, isHost) {
         playerRole : true, // Player Role - Bool (false = evil, true = good)
         missionLeader : isHost, // If player is missionLeader
         nominated : false, // If player is nominated for mission - Bool
-        hasVoted : false, // If player has voted on mission        
+        hasVoted : false, // If player has voted on mission
     });
-    
+    globalUserInfo.missionLeader = isHost;
 };
 
-/* 
+/*
     Functions for step 2 - lobby
 */
 
@@ -81,7 +81,7 @@ function moveToStepTwo(gameName) {
     // Iterate on gamePhase in firebase
     firebaseRef.child("games/" + gameName).once("value", function(snapshot) {
         var game = snapshot.val();
-        game.gamePhase++
+        game.gamePhase = 2;
         firebaseRef.child("games/" + gameName).update(game);
         console.log(game.gamePhase);
     });
@@ -96,8 +96,8 @@ function moveToStepTwo(gameName) {
     } else {
         $("#start-game").hide();
         $("#lobby").show();
-    };  
-    
+    };
+
 };
 
 function setupRoleList(gameName) {
@@ -109,7 +109,7 @@ function setupRoleList(gameName) {
         var gameRoles = getRandomRoleList(numberOfPlayers);
         // Loop through players in game
         for (player in players) {
-            players[player].role = gameRoles.pop(); // randomly assign false/true roles
+            players[player].playerRole = gameRoles.pop(); // randomly assign false/true roles
         };
 
         // Update firebase
@@ -122,14 +122,14 @@ function setupRoleList(gameName) {
 };
 
 function startGameSession(gameName) {
-    firebaseRef.child("games/" + gameName).once("value", function(snapshot) {
-        var game = snapshot.val();
-
+    firebaseRef.child("games/" + gameName).once("value", function(gameSnapshot) {
+        var game = gameSnapshot.val();
+        //change game phase to 3
         if (game.gamePhase == 2) {
-            game.gamePhase == 3;
 
+            game.gamePhase = 3;
             firebaseRef.child("games/" + gameName).update(game);
-        }; 
+        };
     });
 };
 
@@ -189,11 +189,11 @@ function setupBoard(numberOfPlayers) {
     var gameBoard = getBoard(numberOfPlayers);
     // Add the board got from getBoard to firebase
     firebaseRef.child('games/' + globalGameName + "/gameBoard").set(gameBoard);
-    
+
 };
 
-/* 
-    Functions for step 3 - Drag and Drop
+/*
+    Functions for step 3 - Drag and Drop + waiting
 */
 
 function dragAndDrop(gameName) {
@@ -203,4 +203,3 @@ function dragAndDrop(gameName) {
 
     $("#dragAndDrop").show();
 }
-
